@@ -23,4 +23,12 @@ section {
 main {
     margin: 250px auto;
     width: 50%;
+    height: 50%;
 }
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
