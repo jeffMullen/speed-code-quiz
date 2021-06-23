@@ -1,10 +1,18 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
+var questOne = document.querySelector('.one');
+var questTwo = document.querySelector('.two');
+var questThree = document.querySelector('.three');
+var questionsArr = [questOne, questTwo, questThree];
+
 // Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
 
+// Timer start amount
 var secondsLeft = 75;
 
+
+console.log(questionsArr);
 console.log(timer);
 console.log(startBtn);
 console.log(quizWelcome);
@@ -14,6 +22,10 @@ startBtn.addEventListener('click', function () {
 })
 
 function startQuiz() {
+    quizWelcome.setAttribute('style', 'display: none');
+
+
+
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
@@ -23,9 +35,15 @@ function startQuiz() {
             endQuiz();
         }
     }, 1000);
+
+
 }
 
 function endQuiz() {
+
+}
+
+function highScores() {
 
 }
 
