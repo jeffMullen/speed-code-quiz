@@ -20,9 +20,13 @@ function startQuiz() {
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-
+            endQuiz();
         }
     }, 1000);
+}
+
+function endQuiz() {
+
 }
 
 // WHEN I click the start button
