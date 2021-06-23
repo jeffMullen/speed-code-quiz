@@ -41,3 +41,11 @@ article h2 {
     padding: var(--el-padding);
 }
 
+p {
+    padding: var(--el-padding);
+}
+
+button {
+    padding: 10px;
+}
+
