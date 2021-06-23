@@ -4,9 +4,11 @@ body {
     margin: 20px auto;
 }
 
+/* || Header styles --------- */
 header {
     display: flex;
     justify-content: space-between;
+    padding: 20px;
 }
 
 h1 {
@@ -15,4 +17,10 @@ h1 {
 
 section {
     order: 2;
+}
+
+/* Main section styles */
+main {
+    margin: 250px auto;
+    width: 50%;
 }
