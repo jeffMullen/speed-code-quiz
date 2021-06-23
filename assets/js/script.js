@@ -1,11 +1,19 @@
-var timer = document.querySelector(".timer");
-var startBtn = document.querySelector(".start-button");
-var quizContent = document.querySelector(".quiz");
+var timer = document.querySelector('.timer');
+var startBtn = document.querySelector('.start-button');
+var quizContent = document.querySelector('.quiz');
 // Variable storing the contents of HTML quiz article
 
 console.log(timer);
 console.log(startBtn);
 console.log(quizContent);
+
+startBtn.addEventListener('click', function () {
+    startQuiz();
+})
+
+function startQuiz() {
+
+}
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
