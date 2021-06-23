@@ -1,13 +1,13 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
 // Variable storing the contents of HTML quiz article
-var quizContent = document.querySelector('.quiz');
+var quizWelcome = document.querySelector('.quiz-welcome');
 
 var secondsLeft = 75;
 
 console.log(timer);
 console.log(startBtn);
-console.log(quizContent);
+console.log(quizWelcome);
 
 startBtn.addEventListener('click', function () {
     startQuiz();
