@@ -24,6 +24,13 @@ startBtn.addEventListener('click', function () {
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
 
+    for (var i = 0; i < questionsArr.length; i++) {
+        var visibility = questionsArr[i].getAttribute('data-visibility');
+        if (visibility === 'hidden') {
+            questionsArr[i].setAttribute('style', 'display: block');
+
+        }
+    }
 
 
     var timerInterval = setInterval(function () {
