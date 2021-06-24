@@ -5,6 +5,7 @@ var questTwo = document.querySelector('.two');
 var questThree = document.querySelector('.three');
 var judgement = document.querySelector('.judgement');
 var correct = document.querySelector('.correct');
+
 var questionsArr = [questOne, questTwo, questThree];
 
 // Variable storing the contents of HTML quiz article
@@ -12,7 +13,7 @@ var quizWelcome = document.querySelector('.quiz-welcome');
 
 // Timer start amount
 var secondsLeft = 75;
-
+var timerInterval
 
 console.log(questionsArr);
 console.log(timer);
@@ -22,36 +23,31 @@ console.log(quizWelcome);
 startBtn.addEventListener('click', function () {
     startQuiz();
 })
+
 var placeholderIndex = 0;
+
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
     askQuestion();
 
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
 
         if (secondsLeft === 0) {
-            clearInterval(timerInterval);
             endQuiz();
         }
     }, 1000);
-
-
-
-
-
 }
 
 function askQuestion() {
     var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
+
     if (visibility === 'hidden') {
         questionsArr[placeholderIndex].setAttribute('style', 'display: block');
-
     }
 
     checkAnswer();
-
 }
 
 function checkAnswer() {
@@ -75,7 +71,7 @@ function checkAnswer() {
 }
 
 function endQuiz() {
-
+    clearInterval(timerInterval);
 }
 
 function highScores() {
