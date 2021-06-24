@@ -3,6 +3,8 @@ var startBtn = document.querySelector('.start-button');
 var questOne = document.querySelector('.one');
 var questTwo = document.querySelector('.two');
 var questThree = document.querySelector('.three');
+var judgement = document.querySelector('.judgement');
+var correct = document.querySelector('.correct');
 var questionsArr = [questOne, questTwo, questThree];
 
 // Variable storing the contents of HTML quiz article
@@ -20,18 +22,10 @@ console.log(quizWelcome);
 startBtn.addEventListener('click', function () {
     startQuiz();
 })
-
+var placeholderIndex = 0;
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
-
-    for (var i = 0; i < questionsArr.length; i++) {
-        var visibility = questionsArr[i].getAttribute('data-visibility');
-        if (visibility === 'hidden') {
-            questionsArr[i].setAttribute('style', 'display: block');
-
-        }
-    }
-
+    askQuestion();
 
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -44,6 +38,40 @@ function startQuiz() {
     }, 1000);
 
 
+
+
+
+}
+
+function askQuestion() {
+    var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
+    if (visibility === 'hidden') {
+        questionsArr[placeholderIndex].setAttribute('style', 'display: block');
+
+    }
+
+    checkAnswer();
+
+}
+
+function checkAnswer() {
+    var btns = document.querySelectorAll('button');
+    console.log(btns.length);
+    console.log('checkAnswer');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function () {
+            console.log(this);
+            console.log(this.getAttribute('class'));
+            if (this.getAttribute('class') === 'correct') {
+
+            } else {
+                secondsLeft -= 5;
+            }
+            questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+            placeholderIndex++;
+            askQuestion();
+        })
+    }
 }
 
 function endQuiz() {
