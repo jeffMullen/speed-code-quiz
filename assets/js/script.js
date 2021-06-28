@@ -11,6 +11,9 @@ var questionsArr = [questOne, questTwo, questThree];
 // || Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
 
+// || Score
+var score = 0;
+
 // || Timer start amount
 var secondsLeft = 75;
 var timerInterval
@@ -57,14 +60,13 @@ function askQuestion() {
 // Check buttons for class="correct" to determine outcome
 function checkAnswer() {
     var btns = document.querySelectorAll('button');
-    console.log(btns.length);
-    console.log('checkAnswer');
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function () {
             console.log(this);
             console.log(this.getAttribute('class'));
             if (this.getAttribute('class') === 'correct') {
-
+                score++;
+                console.log(score);
             } else {
                 secondsLeft -= 5;
             }
