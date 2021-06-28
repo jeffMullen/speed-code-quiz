@@ -1,12 +1,17 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
+// || Question variables
 var questOne = document.querySelector('.one');
 var questTwo = document.querySelector('.two');
 var questThree = document.querySelector('.three');
+var questFour = document.querySelector('.four');
+var questFive = document.querySelector('.five');
 var judgement = document.querySelector('.judgement');
+
+// || Buttons with class of correct
 var correct = document.querySelector('.correct');
 
-var questionsArr = [questOne, questTwo, questThree];
+var questionsArr = [questOne, questTwo, questThree, questThree, questFour, questFive];
 
 // || Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
@@ -28,14 +33,14 @@ startBtn.addEventListener('click', function () {
     startQuiz();
 })
 
-// Variable storing the index of questionsArr
+// || Variable storing the index of questionsArr
 var placeholderIndex = 0;
 
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
     askQuestion();
 
-    // Timer for quiz
+    // || Timer for quiz
     timerInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
@@ -46,7 +51,7 @@ function startQuiz() {
     }, 1000);
 }
 
-// Checks for questions visibility and displays it on page
+// || Checks for questions visibility and displays it on page
 function askQuestion() {
     var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
 
@@ -57,7 +62,7 @@ function askQuestion() {
     checkAnswer();
 }
 
-// Check buttons for class="correct" to determine outcome
+// || Check buttons for class="correct" to determine outcome
 function checkAnswer() {
     var btns = document.querySelectorAll('button');
     for (var i = 0; i < btns.length; i++) {
@@ -70,7 +75,7 @@ function checkAnswer() {
             } else {
                 secondsLeft -= 5;
             }
-            // Clears the current questions and adds one to the placeholder index
+            // || Clears the current questions and adds one to the placeholder index
             questionsArr[placeholderIndex].setAttribute('style', 'display: none');
             placeholderIndex++;
             askQuestion();
