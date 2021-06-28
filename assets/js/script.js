@@ -8,10 +8,10 @@ var correct = document.querySelector('.correct');
 
 var questionsArr = [questOne, questTwo, questThree];
 
-// Variable storing the contents of HTML quiz article
+// || Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
 
-// Timer start amount
+// || Timer start amount
 var secondsLeft = 75;
 var timerInterval
 
@@ -20,16 +20,19 @@ console.log(timer);
 console.log(startBtn);
 console.log(quizWelcome);
 
+// || Click button to start the quiz
 startBtn.addEventListener('click', function () {
     startQuiz();
 })
 
+// Variable storing the index of questionsArr
 var placeholderIndex = 0;
 
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
     askQuestion();
 
+    // Timer for quiz
     timerInterval = setInterval(function () {
         secondsLeft--;
         timer.textContent = secondsLeft;
@@ -40,6 +43,7 @@ function startQuiz() {
     }, 1000);
 }
 
+// Checks for questions visibility and displays it on page
 function askQuestion() {
     var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
 
@@ -50,6 +54,7 @@ function askQuestion() {
     checkAnswer();
 }
 
+// Check buttons for class="correct" to determine outcome
 function checkAnswer() {
     var btns = document.querySelectorAll('button');
     console.log(btns.length);
@@ -63,6 +68,7 @@ function checkAnswer() {
             } else {
                 secondsLeft -= 5;
             }
+            // Clears the current questions and adds one to the placeholder index
             questionsArr[placeholderIndex].setAttribute('style', 'display: none');
             placeholderIndex++;
             askQuestion();
