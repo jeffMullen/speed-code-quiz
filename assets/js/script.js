@@ -101,7 +101,7 @@ function prepareAnswer() {
 }
 
 function endQuiz() {
-    // Question disappears if time runs out
+    // || Question disappears if time runs out
     for (var i = 0; i < questionsArr.length; i++) {
         if (questionsArr[i].getAttribute('style') === 'display: block') {
             questionsArr[i].setAttribute('style', 'display: none');
@@ -113,24 +113,47 @@ function endQuiz() {
     setHighScores();
 }
 
+var newLi;
+
 function setHighScores() {
     submit.addEventListener('click', function (event) {
         event.preventDefault();
-        // Create a new list item to the leaderboard
-        var newLi = document.createElement('li');
-        newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
-        leaderBoard.appendChild(newLi);
-        // Add score to array that will be stored in local storage
-        highScoresArr = highScoresArr.concat(newLi.textContent);
-        localStorage.setItem('highscores', JSON.stringify(highScoresArr))
-        console.log('highscores array ' + highScoresArr);
+        if (highScoresArr[0] === undefined) {
+            newLi = document.createElement('li');
+            newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
 
-        entry.setAttribute('style', 'display: none');
-        highScores();
+            // || Add score to array that will be stored in local storage
+            highScoresArr = highScoresArr.concat(newLi.textContent);
+            localStorage.setItem('highscores', JSON.stringify(highScoresArr))
+            console.log('highscores array ' + highScoresArr);
+
+            // || Clear initials input element
+            entry.setAttribute('style', 'display: none');
+            leaderBoard.appendChild(newLi);
+            highScores();
+        }
+        // else {
+        //     newLi = document.createElement('li');
+        //     newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
+
+        //     // || Add score to array that will be stored in local storage
+        //     highScoresArr = highScoresArr.concat(newLi.textContent);
+        //     localStorage.setItem('highscores', JSON.stringify(highScoresArr))
+        //     console.log('highscores array ' + highScoresArr);
+
+        //     // || Clear initials input element
+        //     entry.setAttribute('style', 'display: none');
+        //     leaderBoard.appendChild(newLi);
+        //     highScores();
+        // }
     })
 }
 
 function highScores() {
+
+    // || Create a new list item to the leaderboard
+    newLi = localStorage.getItem('highscores');
+
     highScoresEl.setAttribute('style', 'display: block');
 
 }
