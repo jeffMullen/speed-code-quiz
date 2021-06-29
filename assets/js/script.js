@@ -11,7 +11,7 @@ var judgement = document.querySelector('.judgement');
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
 
-var questionsArr = [questOne, questTwo, questThree, questThree, questFour, questFive];
+var questionsArr = [questOne, questTwo, questThree, questFour, questFive];
 
 // || Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
@@ -21,7 +21,7 @@ var score = 0;
 
 // || Timer start amount
 var secondsLeft = 75;
-var timerInterval
+var timerInterval;
 
 console.log(questionsArr);
 console.log(timer);
@@ -54,6 +54,7 @@ function startQuiz() {
 // || Checks for questions visibility and displays it on page
 function askQuestion() {
     var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
+    console.log(visibility);
 
     if (visibility === 'hidden') {
         questionsArr[placeholderIndex].setAttribute('style', 'display: block');
@@ -62,9 +63,48 @@ function askQuestion() {
     checkAnswer();
 }
 
-// || Check buttons for class="correct" to determine outcome
+// function checkAnswer() {
+//     var btns = document.querySelectorAll('button');
+//     console.log(btns);
+//     for (var i = 0; i < btns.length; i++) {
+
+
+//         if (placeholderIndex < questionsArr.length) {
+//             btns[i].addEventListener('click', function () {
+//                 if (this.getAttribute('class') === 'correct') {
+//                     console.log(this);
+//                     score++;
+//                     console.log(score);
+//                     // placeholderIndex++;
+//                     // console.log(placeholderIndex);
+//                     // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+//                 } else {
+//                     secondsLeft -= 5;
+//                     // placeholderIndex++;
+//                     // console.log(placeholderIndex);
+//                     // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+//                 }
+
+//             })
+//         } else {
+//             endQuiz();
+//         }
+
+//     }
+//     resetQuestion();
+// }
+
+// function resetQuestion() {
+//     questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+//     placeholderIndex++;
+//     console.log(placeholderIndex);
+//     askQuestion();
+// }
+
+// || Check buttons for class= "correct" to determine outcome
 function checkAnswer() {
     var btns = document.querySelectorAll('button');
+    console.log(btns);
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function () {
             console.log(this);
