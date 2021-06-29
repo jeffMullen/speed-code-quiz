@@ -7,6 +7,7 @@ var questThree = document.querySelector('.three');
 var questFour = document.querySelector('.four');
 var questFive = document.querySelector('.five');
 var judgement = document.querySelector('.judgement');
+var displayScore = document.querySelector('.display-score');
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
@@ -86,6 +87,8 @@ function prepareAnswer() {
 
 function endQuiz() {
     clearInterval(timerInterval);
+    displayScore.textContent = ('Your score is ' + score + '.')
+
 }
 
 function highScores() {
