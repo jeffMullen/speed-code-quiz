@@ -86,9 +86,13 @@ function prepareAnswer() {
                 secondsLeft -= 5;
             }
             // || Clears the current question and adds one to the placeholder index
-            questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-            placeholderIndex++;
-            askQuestion();
+            if (placeholderIndex === questionsArr.length) {
+                return;
+            } else {
+                questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+                placeholderIndex++;
+                askQuestion();
+            }
         })
     }
 }
@@ -103,7 +107,7 @@ function endQuiz() {
     displayScore.textContent = ('Your score is ' + score + '.')
     initialsEntry.setAttribute('style', 'display: block');
     submit.addEventListener('click', function () {
-        // localStorage.setItem('initials', initials);
+        localStorage.setItem('initials', initials.value);
     })
 }
 
