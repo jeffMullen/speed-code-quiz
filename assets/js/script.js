@@ -15,7 +15,7 @@ var initials = document.querySelector('#initials');
 var submit = document.querySelector('#submit');
 
 // || Highscores Array
-var highScores = [];
+var highScoresArr = [];
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
@@ -98,6 +98,7 @@ function prepareAnswer() {
 }
 
 function endQuiz() {
+    // Question disappears if time runs out
     for (var i = 0; i < questionsArr.length; i++) {
         if (questionsArr[i].getAttribute('style') === 'display: block') {
             questionsArr[i].setAttribute('style', 'display: none');
@@ -108,7 +109,9 @@ function endQuiz() {
     initialsEntry.setAttribute('style', 'display: block');
     submit.addEventListener('click', function () {
         localStorage.setItem('initials', initials.value);
+        localStorage.setItem('score', score);
     })
+    highScores();
 }
 
 function highScores() {
