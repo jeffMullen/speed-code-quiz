@@ -76,7 +76,7 @@ function prepareAnswer() {
             } else {
                 secondsLeft -= 5;
             }
-            // || Clears the current questions and adds one to the placeholder index
+            // || Clears the current question and adds one to the placeholder index
             questionsArr[placeholderIndex].setAttribute('style', 'display: none');
             placeholderIndex++;
             askQuestion();
