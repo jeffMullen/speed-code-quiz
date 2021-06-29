@@ -109,18 +109,22 @@ function endQuiz() {
     clearInterval(timerInterval);
     displayScore.textContent = ('Your score is ' + score + '.')
     initialsEntry.setAttribute('style', 'display: block');
-    highScores();
+    setHighScores();
 }
 
-function highScores() {
+function setHighScores() {
     submit.addEventListener('click', function (event) {
         event.preventDefault();
+        // Create a new list item to the leaderboard
         var newLi = document.createElement('li');
-        newLi.textContent = (initials.value + ' - ' + score);
-        console.log(newLi.textContent);
+        newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
+        console.log(newLi.textContent.toUpperCase());
         leaderBoard.appendChild(newLi);
-        localStorage.setItem('initials', initials.value);
-        localStorage.setItem('score', score);
+        // Add score to array that will be stored in local storage
+        highScoresArr = highScoresArr.concat(newLi.textContent);
+        localStorage.setItem('highscores', JSON.stringify(highScoresArr))
+
+        console.log('highscores array ' + highScoresArr);
     })
 
 
@@ -129,6 +133,7 @@ function highScores() {
 // Create list items that display initials and score
 // Store these in local storage with JSON as an object
 // When highscores is opened, parse JSON object and display on page
+// Sort by highest to lowest score
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
