@@ -15,7 +15,9 @@ var initials = document.querySelector('#initials');
 var submit = document.querySelector('#submit');
 
 // || Highscores Array
+var leaderBoard = document.querySelector('#leaderboard')
 var highScoresArr = [];
+var userInitialsArray = [];
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
@@ -107,16 +109,26 @@ function endQuiz() {
     clearInterval(timerInterval);
     displayScore.textContent = ('Your score is ' + score + '.')
     initialsEntry.setAttribute('style', 'display: block');
-    submit.addEventListener('click', function () {
-        localStorage.setItem('initials', initials.value);
-        localStorage.setItem('score', score);
-    })
     highScores();
 }
 
 function highScores() {
+    submit.addEventListener('click', function (event) {
+        event.preventDefault();
+        var newLi = document.createElement('li');
+        newLi.textContent = (initials.value + ' - ' + score);
+        console.log(newLi.textContent);
+        leaderBoard.appendChild(newLi);
+        localStorage.setItem('initials', initials.value);
+        localStorage.setItem('score', score);
+    })
+
 
 }
+
+// Create list items that display initials and score
+// Store these in local storage with JSON as an object
+// When highscores is opened, parse JSON object and display on page
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
