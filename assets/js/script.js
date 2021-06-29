@@ -17,13 +17,25 @@ var submit = document.querySelector('#submit');
 // || Highscores Array
 var highScoresEl = document.querySelector('.highscores');
 var leaderBoard = document.querySelector('#leaderboard');
-var highScoresArr = [];
-var userInitialsArray = [];
+var highScoresArr;
+if (JSON.parse(localStorage.getItem('highscores')) === undefined) {
+    highScoresArr = [JSON.parse(localStorage.getItem('highscores'))];
+} else {
+    highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+}
+
+// var value = ["aa", "bb", "cc"]
+// localStorage.setItem("testKey", JSON.stringify(value));
+// var test = JSON.parse(localStorage.getItem("testKey"));
+// alert(test);
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
 
 var questionsArr = [questOne, questTwo, questThree, questFour, questFive];
+
+// || Try quiz again button - highscores page
+var restart = document.querySelector('#restart');
 
 // || Variable storing the contents of HTML quiz article
 var quizWelcome = document.querySelector('.quiz-welcome');
@@ -32,7 +44,7 @@ var quizWelcome = document.querySelector('.quiz-welcome');
 var score = 0;
 
 // || Timer start amount
-var secondsLeft = 75;
+var secondsLeft = 50;
 var timerInterval;
 
 console.log(questionsArr);
@@ -118,12 +130,12 @@ var newLi;
 function setHighScores() {
     submit.addEventListener('click', function (event) {
         event.preventDefault();
-        if (highScoresArr[0] === undefined) {
+        if (highScoresArr === undefined) {
             newLi = document.createElement('li');
             newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
 
             // || Add score to array that will be stored in local storage
-            highScoresArr = highScoresArr.concat(newLi.textContent);
+            highScoresArr = [newLi.textContent];
             localStorage.setItem('highscores', JSON.stringify(highScoresArr))
             console.log('highscores array ' + highScoresArr);
 
@@ -132,20 +144,31 @@ function setHighScores() {
             leaderBoard.appendChild(newLi);
             highScores();
         }
-        // else {
-        //     newLi = document.createElement('li');
-        //     newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
+        else {
+            newLi = document.createElement('li');
+            newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
+            // || Add score to array that will be stored in local storage
+            highScoresArr = highScoresArr.concat(newLi.textContent);
+            localStorage.setItem('highscores', JSON.stringify(highScoresArr));
+            console.log(JSON.parse(localStorage.getItem('highscores')));
 
-        //     // || Add score to array that will be stored in local storage
-        //     highScoresArr = highScoresArr.concat(newLi.textContent);
-        //     localStorage.setItem('highscores', JSON.stringify(highScoresArr))
-        //     console.log('highscores array ' + highScoresArr);
+            highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+            console.log(highScoresArr.length);
+            // localStorage.setItem('highscores', JSON.stringify(highScoresArr))
+            console.log('highscores array ' + highScoresArr);
 
-        //     // || Clear initials input element
-        //     entry.setAttribute('style', 'display: none');
-        //     leaderBoard.appendChild(newLi);
-        //     highScores();
-        // }
+            // || Clear initials input element
+            entry.setAttribute('style', 'display: none');
+            // leaderBoard.appendChild(newLi);
+
+            for (var i = 0; i < highScoresArr.length; i++) {
+                console.log(highScoresArr.length);
+                newLi.textContent = highScoresArr[i];
+                console.log(newLi);
+                leaderBoard.appendChild(newLi);
+            }
+            highScores();
+        }
     })
 }
 
@@ -155,6 +178,14 @@ function highScores() {
     newLi = localStorage.getItem('highscores');
 
     highScoresEl.setAttribute('style', 'display: block');
+
+    // restart.addEventListener('click', function () {
+    //     score = 0;
+    //     placeholderIndex = 0;
+    //     highScoresEl.setAttribute('style', 'display: none');
+    //     quizWelcome.setAttribute('style', 'display: block');
+    //     startQuiz();
+    // })
 
 }
 
