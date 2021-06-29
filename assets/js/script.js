@@ -54,10 +54,9 @@ function startQuiz() {
 
 // || Checks for questions visibility and displays it on page
 function askQuestion() {
-    var visibility = questionsArr[placeholderIndex].getAttribute('data-visibility');
-    console.log(visibility);
-
-    if (visibility === 'hidden') {
+    if (placeholderIndex === questionsArr.length) {
+        endQuiz();
+    } else if (questionsArr[placeholderIndex].getAttribute('data-visibility') === 'hidden') {
         questionsArr[placeholderIndex].setAttribute('style', 'display: block');
     }
 }
