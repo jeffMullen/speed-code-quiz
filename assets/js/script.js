@@ -9,13 +9,14 @@ var questFive = document.querySelector('.five');
 var judgement = document.querySelector('.judgement');
 
 // || Score entry variables
-var displayScore = document.querySelector('.display-score');
-var initialsEntry = document.querySelector('#initials-entry');
+var displayScore = document.querySelector('#display-score');
+var entry = document.querySelector('#entry');
 var initials = document.querySelector('#initials');
 var submit = document.querySelector('#submit');
 
 // || Highscores Array
-var leaderBoard = document.querySelector('#leaderboard')
+var highScoresEl = document.querySelector('.highscores');
+var leaderBoard = document.querySelector('#leaderboard');
 var highScoresArr = [];
 var userInitialsArray = [];
 
@@ -107,8 +108,8 @@ function endQuiz() {
         }
     }
     clearInterval(timerInterval);
-    displayScore.textContent = ('Your score is ' + score + '.')
-    initialsEntry.setAttribute('style', 'display: block');
+    displayScore.textContent = ('Your score is ' + score);
+    entry.setAttribute('style', 'display: block');
     setHighScores();
 }
 
@@ -118,15 +119,19 @@ function setHighScores() {
         // Create a new list item to the leaderboard
         var newLi = document.createElement('li');
         newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
-        console.log(newLi.textContent.toUpperCase());
         leaderBoard.appendChild(newLi);
         // Add score to array that will be stored in local storage
         highScoresArr = highScoresArr.concat(newLi.textContent);
         localStorage.setItem('highscores', JSON.stringify(highScoresArr))
-
         console.log('highscores array ' + highScoresArr);
-    })
 
+        entry.setAttribute('style', 'display: none');
+        highScores();
+    })
+}
+
+function highScores() {
+    highScoresEl.setAttribute('style', 'display: block');
 
 }
 

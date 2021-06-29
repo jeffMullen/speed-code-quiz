@@ -55,7 +55,11 @@ button {
     display: none;
 }
 
-#initials-entry {
+#entry {
+    display: none;
+}
+
+.highscores {
     display: none;
 }
 
