@@ -7,8 +7,15 @@ var questThree = document.querySelector('.three');
 var questFour = document.querySelector('.four');
 var questFive = document.querySelector('.five');
 var judgement = document.querySelector('.judgement');
+
+// || Score entry variables
 var displayScore = document.querySelector('.display-score');
 var initialsEntry = document.querySelector('#initials-entry');
+var initials = document.querySelector('#initials');
+var submit = document.querySelector('#submit');
+
+// || Highscores Array
+var highScores = [];
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
@@ -87,9 +94,17 @@ function prepareAnswer() {
 }
 
 function endQuiz() {
+    for (var i = 0; i < questionsArr.length; i++) {
+        if (questionsArr[i].getAttribute('style') === 'display: block') {
+            questionsArr[i].setAttribute('style', 'display: none');
+        }
+    }
     clearInterval(timerInterval);
     displayScore.textContent = ('Your score is ' + score + '.')
     initialsEntry.setAttribute('style', 'display: block');
+    submit.addEventListener('click', function () {
+        // localStorage.setItem('initials', initials);
+    })
 }
 
 function highScores() {
