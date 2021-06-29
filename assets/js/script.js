@@ -38,6 +38,7 @@ var placeholderIndex = 0;
 
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
+    prepareAnswer();
     askQuestion();
 
     // || Timer for quiz
@@ -59,56 +60,17 @@ function askQuestion() {
     if (visibility === 'hidden') {
         questionsArr[placeholderIndex].setAttribute('style', 'display: block');
     }
-
-    checkAnswer();
 }
 
-// function checkAnswer() {
-//     var btns = document.querySelectorAll('button');
-//     console.log(btns);
-//     for (var i = 0; i < btns.length; i++) {
-
-
-//         if (placeholderIndex < questionsArr.length) {
-//             btns[i].addEventListener('click', function () {
-//                 if (this.getAttribute('class') === 'correct') {
-//                     console.log(this);
-//                     score++;
-//                     console.log(score);
-//                     // placeholderIndex++;
-//                     // console.log(placeholderIndex);
-//                     // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-//                 } else {
-//                     secondsLeft -= 5;
-//                     // placeholderIndex++;
-//                     // console.log(placeholderIndex);
-//                     // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-//                 }
-
-//             })
-//         } else {
-//             endQuiz();
-//         }
-
-//     }
-//     resetQuestion();
-// }
-
-// function resetQuestion() {
-//     questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-//     placeholderIndex++;
-//     console.log(placeholderIndex);
-//     askQuestion();
-// }
-
 // || Check buttons for class= "correct" to determine outcome
-function checkAnswer() {
+function prepareAnswer() {
     var btns = document.querySelectorAll('button');
     console.log(btns);
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function () {
             console.log(this);
             console.log(this.getAttribute('class'));
+            console.log(this.textContent);
             if (this.getAttribute('class') === 'correct') {
                 score++;
                 console.log(score);
