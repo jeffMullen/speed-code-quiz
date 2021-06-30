@@ -17,12 +17,18 @@ var submit = document.querySelector('#submit');
 // || Highscores Array
 var highScoresEl = document.querySelector('.highscores');
 var leaderBoard = document.querySelector('#leaderboard');
-var highScoresArr;
-if (JSON.parse(localStorage.getItem('highscores')) === undefined) {
-    highScoresArr = [JSON.parse(localStorage.getItem('highscores'))];
-} else {
-    highScoresArr = JSON.parse(localStorage.getItem('highscores'));
-}
+var highScoresArr = [];
+highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+
+// if (JSON.parse(localStorage.getItem('highscores')) !== highScoresArr) {
+//     highScoresArr;
+//     console.log(highScoresArr);
+// } else {
+//     highScoresArr = [];
+//     var incoming = JSON.parse(localStorage.getItem('highscores'));
+//     console.log(incoming);
+// }
+console.log(highScoresArr);
 
 // var value = ["aa", "bb", "cc"]
 // localStorage.setItem("testKey", JSON.stringify(value));
@@ -130,7 +136,7 @@ var newLi;
 function setHighScores() {
     submit.addEventListener('click', function (event) {
         event.preventDefault();
-        if (highScoresArr === undefined) {
+        if (highScoresArr === null) {
             newLi = document.createElement('li');
             newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
 
@@ -142,7 +148,8 @@ function setHighScores() {
             // || Clear initials input element
             entry.setAttribute('style', 'display: none');
             leaderBoard.appendChild(newLi);
-            highScores();
+            highScoresEl.setAttribute('style', 'display: block');
+            // highScores();
         }
         else {
             newLi = document.createElement('li');
@@ -150,34 +157,41 @@ function setHighScores() {
             // || Add score to array that will be stored in local storage
             highScoresArr = highScoresArr.concat(newLi.textContent);
             localStorage.setItem('highscores', JSON.stringify(highScoresArr));
-            console.log(JSON.parse(localStorage.getItem('highscores')));
+            highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+            console.log(highScoresArr);
 
             highScoresArr = JSON.parse(localStorage.getItem('highscores'));
             console.log(highScoresArr.length);
-            // localStorage.setItem('highscores', JSON.stringify(highScoresArr))
             console.log('highscores array ' + highScoresArr);
+
+            for (var i = 0; i < highScoresArr.length; i++) {
+                newContent = document.createTextNode(highScoresArr[i]);
+                newLi.appendChild(newContent);
+            }
 
             // || Clear initials input element
             entry.setAttribute('style', 'display: none');
-            // leaderBoard.appendChild(newLi);
+            leaderBoard.appendChild(newLi);
+            highScoresEl.setAttribute('style', 'display: block');
 
-            for (var i = 0; i < highScoresArr.length; i++) {
-                console.log(highScoresArr.length);
-                newLi.textContent = highScoresArr[i];
-                console.log(newLi);
-                leaderBoard.appendChild(newLi);
-            }
-            highScores();
+            // highScores();
         }
     })
 }
 
-function highScores() {
+// function highScores() {
 
-    // || Create a new list item to the leaderboard
-    newLi = localStorage.getItem('highscores');
+//     for (var i = 0; i < highScoresArr.length; i++) {
+//         console.log(highScoresArr.length);
+//         newLi.textContent = highScoresArr[i];
+//         console.log(newLi);
+//         highScoresArr.forEach(leaderBoard.appendChild(newLi));
 
-    highScoresEl.setAttribute('style', 'display: block');
+//     }
+//     // || Create a new list item to the leaderboard
+//     // newLi = localStorage.getItem('highscores');
+
+//     highScoresEl.setAttribute('style', 'display: block');
 
     // restart.addEventListener('click', function () {
     //     score = 0;
@@ -187,7 +201,7 @@ function highScores() {
     //     startQuiz();
     // })
 
-}
+// }
 
 // Create list items that display initials and score
 // Store these in local storage with JSON as an object
