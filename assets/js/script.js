@@ -138,7 +138,6 @@ function setHighScores() {
             entry.setAttribute('style', 'display: none');
             leaderBoard.appendChild(newLi);
             highScoresEl.setAttribute('style', 'display: block');
-            // highScores();
         }
         else {
             newLi = document.createElement('li');
@@ -153,12 +152,6 @@ function setHighScores() {
 }
 
 function highScores() {
-    // if (quizWelcome.setAttribute('style', 'display: block')) {
-    // } else {
-    //     quizWelcome.setAttribute('style', 'display: none');
-    // }
-    // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-
     highScoresArr = JSON.parse(localStorage.getItem('highscores'));
     console.log(highScoresArr);
 
@@ -178,18 +171,6 @@ function highScores() {
     // || Clear initials input element
     entry.setAttribute('style', 'display: none');
     highScoresEl.setAttribute('style', 'display: block');
-
-
-    // highScoresEl.setAttribute('style', 'display: block');
-
-    // restart.addEventListener('click', function () {
-    //     score = 0;
-    //     placeholderIndex = 0;
-    //     highScoresEl.setAttribute('style', 'display: none');
-    //     quizWelcome.setAttribute('style', 'display: block');
-    //     askQuestion();
-    // })
-
 }
 
 
