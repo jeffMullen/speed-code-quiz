@@ -7,6 +7,8 @@ var questTwo = document.querySelector('.two');
 var questThree = document.querySelector('.three');
 var questFour = document.querySelector('.four');
 var questFive = document.querySelector('.five');
+var questionsArr = [questOne, questTwo, questThree, questFour, questFive];
+
 var judgement = document.querySelector('.judgement');
 
 // || Score entry variables
@@ -15,16 +17,16 @@ var entry = document.querySelector('#entry');
 var initials = document.querySelector('#initials');
 var submit = document.querySelector('#submit');
 
-// || Highscores Array
+// || Highscore display elements
 var highScoresEl = document.querySelector('.highscores');
 var leaderBoard = document.querySelector('#leaderboard');
+
+// || Highscores Array
 var highScoresArr = [];
 highScoresArr = JSON.parse(localStorage.getItem('highscores'));
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
-
-var questionsArr = [questOne, questTwo, questThree, questFour, questFive];
 
 // || Try quiz again button - highscores page
 var restart = document.querySelector('#restart');
@@ -47,6 +49,7 @@ startBtn.addEventListener('click', function () {
 // || Variable storing the index of questionsArr
 var placeholderIndex = 0;
 
+// || Sets Timer and asks questions
 function startQuiz() {
     quizWelcome.setAttribute('style', 'display: none');
     prepareAnswer();
@@ -82,6 +85,7 @@ function prepareAnswer() {
             } else {
                 secondsLeft -= 5;
             }
+
             // || Clears the current question and adds one to the placeholder index
             if (placeholderIndex === questionsArr.length) {
                 return;

@@ -54,7 +54,7 @@ header section {
 
 /* || Main section styles --------- */
 main {
-    margin: 150px auto;
+    margin: 100px auto;
     width: 50%;
 }
 
@@ -92,6 +92,7 @@ button {
     border-radius: 10%;
 }
 
+/* || Button that brings you back to index.html --------- */
 #restart {
     margin: 75px 0;
 }
@@ -119,7 +120,7 @@ button {
 }
 
 
-/* || Question styles --------- */
+/* || Hidden elements --------- */
 .quizQuest {
     display: none;
 }
@@ -137,6 +138,7 @@ button {
     display: none;
 }
 
+/* || Highscore display styles --------- */
 #leaderboard li {
     list-style: decimal;
     margin: 5px, 10px;

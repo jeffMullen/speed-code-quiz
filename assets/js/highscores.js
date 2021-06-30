@@ -4,6 +4,8 @@ var leaderBoard = document.querySelector('#leaderboard')
 var highScoresArr = [];
 highScoresArr = JSON.parse(localStorage.getItem('highscores'));
 
+// || Setting highscore array and looping through to display them
+
 scorePage.setAttribute('style', 'display: block');
 
 highScoresArr = JSON.parse(localStorage.getItem('highscores'));
