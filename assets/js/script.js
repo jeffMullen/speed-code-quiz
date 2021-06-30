@@ -165,13 +165,15 @@ function setHighScores() {
             console.log('highscores array ' + highScoresArr);
 
             for (var i = 0; i < highScoresArr.length; i++) {
+                var newLi = document.createElement("li");
+                leaderBoard.appendChild(newLi);
                 newContent = document.createTextNode(highScoresArr[i]);
                 newLi.appendChild(newContent);
             }
 
+
             // || Clear initials input element
             entry.setAttribute('style', 'display: none');
-            leaderBoard.appendChild(newLi);
             highScoresEl.setAttribute('style', 'display: block');
 
             // highScores();
