@@ -1,5 +1,6 @@
 :root {
     --el-padding: 20px;
+    --heading-color: #3882a0;
 }
 
 
@@ -12,17 +13,29 @@ body {
 /* || Header styles --------- */
 header {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     padding: var(--el-padding);
-    font-size: 20px;
+    
 }
 
 h1 {
-    order: 1;
+    font-weight: bold;
+    font-size: 27px;
+    color: var(--heading-color);
 }
 
-section {
+header div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+}
+
+header section {
     order: 2;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* || Main section styles --------- */
@@ -42,6 +55,8 @@ article {
 
 article h2 {
     padding: var(--el-padding);
+    color: var(--heading-color);
+    font-size: 20px;
 }
 
 .quizQuest p {
