@@ -21,9 +21,6 @@ var leaderBoard = document.querySelector('#leaderboard');
 var highScoresArr = [];
 highScoresArr = JSON.parse(localStorage.getItem('highscores'));
 
-console.log(highScoresArr);
-
-
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
 
@@ -41,11 +38,6 @@ var score = 0;
 // || Timer start amount
 var secondsLeft = 50;
 var timerInterval;
-
-console.log(questionsArr);
-console.log(timer);
-console.log(startBtn);
-console.log(quizWelcome);
 
 // || Click button to start the quiz
 startBtn.addEventListener('click', function () {
@@ -83,15 +75,10 @@ function askQuestion() {
 // || Check buttons for class= "correct" to determine outcome
 function prepareAnswer() {
     var btns = document.querySelectorAll('button');
-    console.log(btns);
     for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click', function () {
-            console.log(this);
-            console.log(this.getAttribute('class'));
-            console.log(this.textContent);
             if (this.getAttribute('class') === 'correct') {
                 score++;
-                console.log(score);
             } else {
                 secondsLeft -= 5;
             }
@@ -132,7 +119,6 @@ function setHighScores() {
             // || Add score to array that will be stored in local storage
             highScoresArr = [newLi.textContent];
             localStorage.setItem('highscores', JSON.stringify(highScoresArr))
-            console.log('highscores array ' + highScoresArr);
 
             // || Clear initials input element
             entry.setAttribute('style', 'display: none');
@@ -142,6 +128,7 @@ function setHighScores() {
         else {
             newLi = document.createElement('li');
             newLi.textContent = (initials.value.toUpperCase() + ' - ' + score);
+
             // || Add score to array that will be stored in local storage
             highScoresArr = highScoresArr.concat(newLi.textContent);
             localStorage.setItem('highscores', JSON.stringify(highScoresArr));
@@ -153,12 +140,6 @@ function setHighScores() {
 
 function highScores() {
     highScoresArr = JSON.parse(localStorage.getItem('highscores'));
-    console.log(highScoresArr);
-
-    highScoresArr = JSON.parse(localStorage.getItem('highscores'));
-    console.log(highScoresArr.length);
-    console.log('highscores array ' + highScoresArr);
-
 
     for (var i = 0; i < highScoresArr.length; i++) {
         var newLi = document.createElement("li");
@@ -172,13 +153,6 @@ function highScores() {
     entry.setAttribute('style', 'display: none');
     highScoresEl.setAttribute('style', 'display: block');
 }
-
-
-
-// Create list items that display initials and score
-// Store these in local storage with JSON as an object
-// When highscores is opened, parse JSON object and display on page
-// Sort by highest to lowest score
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
