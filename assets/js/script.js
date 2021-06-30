@@ -127,7 +127,7 @@ function endQuiz() {
     }
     clearInterval(timerInterval);
     displayScore.textContent = ('Your score is ' + score);
-    entry.setAttribute('style', 'display: block');
+    entry.setAttribute('style', 'display: flex');
     setHighScores();
 }
 

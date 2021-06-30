@@ -10,6 +10,7 @@ body {
     width: 80%;
     margin: 20px auto;
     font-family: 'Montserrat', sans-serif;
+    line-height: 1.5em;
 }
 
 /* || Header styles --------- */
@@ -66,19 +67,34 @@ article h2, section h2 {
     font-weight: bold;
 }
 
+button {
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.quiz-welcome button, #submit {
+    background: #3a0ca3;
+    color: white;
+    font-weight: bold;
+    border-radius: 10%;
+}
+
 .quizQuest div {
     display: flex;
     flex-direction: column;
     align-items:flex-start;
 }
 
+/* || Quiz button styles --------- */
 .quizQuest button {
     margin: 5px 20px;
     background: var(--quiz-button);
     color: #fff;
     font-size: 17px;
     border: none;
-    border-radius: 5%;
+    border-radius: 10000000px;
+    padding: 10px 20px;
 }
 
 
@@ -86,10 +102,6 @@ article h2, section h2 {
     padding: var(--el-padding);
 }
 
-button {
-    padding: 10px;
-    
-}
 
 /* || Question styles --------- */
 .quizQuest {
@@ -98,12 +110,17 @@ button {
 
 #entry {
     display: none;
+    flex-direction: column;
 }
 
 .highscores {
     display: none;
+    flex-direction: column;
 }
 
 #leaderboard li {
     list-style: decimal;
+    margin: 5px, 10px;
 }
+
+
