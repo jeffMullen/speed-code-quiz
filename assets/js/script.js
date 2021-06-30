@@ -1,6 +1,6 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
-var viewHighScores = document.querySelector('#view-highscores')
+
 // || Question variables
 var questOne = document.querySelector('.one');
 var questTwo = document.querySelector('.two');
@@ -46,11 +46,6 @@ console.log(questionsArr);
 console.log(timer);
 console.log(startBtn);
 console.log(quizWelcome);
-
-// || Click Highscores link to view
-viewHighScores.addEventListener('click', function () {
-    highScores();
-})
 
 // || Click button to start the quiz
 startBtn.addEventListener('click', function () {
@@ -196,6 +191,8 @@ function highScores() {
     // })
 
 }
+
+
 
 // Create list items that display initials and score
 // Store these in local storage with JSON as an object

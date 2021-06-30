@@ -122,6 +122,10 @@ button {
     flex-direction: column;
 }
 
+.score-page {
+    display: block;
+}
+
 .highscores {
     display: none;
 }
