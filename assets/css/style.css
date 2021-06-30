@@ -1,6 +1,7 @@
 :root {
     --el-padding: 20px;
     --heading-color: #3882a0;
+    --quiz-background: #f4e3b8;
 }
 
 
@@ -40,24 +41,29 @@ header section {
 
 /* || Main section styles --------- */
 main {
-    margin: 200px auto;
+    margin: 150px auto;
     width: 50%;
 }
 
 /* || Quiz styles --------- */
-article {
+article, main section {
+    margin:auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around;    background: var(--quiz-background);
     height: 400px;
+    width: 400px;
+    padding: 50px;
+    border-radius: 3%;
 }
 
-article h2 {
+article h2, section h2 {
     padding: var(--el-padding);
     color: var(--heading-color);
     font-size: 20px;
 }
+
 
 .quizQuest p {
     padding: var(--el-padding);
