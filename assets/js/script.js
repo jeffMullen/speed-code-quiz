@@ -1,5 +1,6 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
+var viewHighScores = document.querySelector('#view-highscores')
 // || Question variables
 var questOne = document.querySelector('.one');
 var questTwo = document.querySelector('.two');
@@ -20,20 +21,8 @@ var leaderBoard = document.querySelector('#leaderboard');
 var highScoresArr = [];
 highScoresArr = JSON.parse(localStorage.getItem('highscores'));
 
-// if (JSON.parse(localStorage.getItem('highscores')) !== highScoresArr) {
-//     highScoresArr;
-//     console.log(highScoresArr);
-// } else {
-//     highScoresArr = [];
-//     var incoming = JSON.parse(localStorage.getItem('highscores'));
-//     console.log(incoming);
-// }
 console.log(highScoresArr);
 
-// var value = ["aa", "bb", "cc"]
-// localStorage.setItem("testKey", JSON.stringify(value));
-// var test = JSON.parse(localStorage.getItem("testKey"));
-// alert(test);
 
 // || Buttons with class of correct
 var correct = document.querySelector('.correct');
@@ -57,6 +46,11 @@ console.log(questionsArr);
 console.log(timer);
 console.log(startBtn);
 console.log(quizWelcome);
+
+// || Click Highscores link to view
+viewHighScores.addEventListener('click', function () {
+    highScores();
+})
 
 // || Click button to start the quiz
 startBtn.addEventListener('click', function () {
@@ -157,53 +151,51 @@ function setHighScores() {
             // || Add score to array that will be stored in local storage
             highScoresArr = highScoresArr.concat(newLi.textContent);
             localStorage.setItem('highscores', JSON.stringify(highScoresArr));
-            highScoresArr = JSON.parse(localStorage.getItem('highscores'));
-            console.log(highScoresArr);
 
-            highScoresArr = JSON.parse(localStorage.getItem('highscores'));
-            console.log(highScoresArr.length);
-            console.log('highscores array ' + highScoresArr);
-
-            for (var i = 0; i < highScoresArr.length; i++) {
-                var newLi = document.createElement("li");
-                leaderBoard.appendChild(newLi);
-                newContent = document.createTextNode(highScoresArr[i]);
-                newLi.appendChild(newContent);
-            }
-
-
-            // || Clear initials input element
-            entry.setAttribute('style', 'display: none');
-            highScoresEl.setAttribute('style', 'display: block');
-
-            // highScores();
+            highScores();
         }
     })
 }
 
-// function highScores() {
+function highScores() {
+    // if (quizWelcome.setAttribute('style', 'display: block')) {
+    // } else {
+    //     quizWelcome.setAttribute('style', 'display: none');
+    // }
+    // questionsArr[placeholderIndex].setAttribute('style', 'display: none');
 
-//     for (var i = 0; i < highScoresArr.length; i++) {
-//         console.log(highScoresArr.length);
-//         newLi.textContent = highScoresArr[i];
-//         console.log(newLi);
-//         highScoresArr.forEach(leaderBoard.appendChild(newLi));
+    highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+    console.log(highScoresArr);
 
-//     }
-//     // || Create a new list item to the leaderboard
-//     // newLi = localStorage.getItem('highscores');
+    highScoresArr = JSON.parse(localStorage.getItem('highscores'));
+    console.log(highScoresArr.length);
+    console.log('highscores array ' + highScoresArr);
 
-//     highScoresEl.setAttribute('style', 'display: block');
+
+    for (var i = 0; i < highScoresArr.length; i++) {
+        var newLi = document.createElement("li");
+        leaderBoard.appendChild(newLi);
+        newContent = document.createTextNode(highScoresArr[i]);
+        newLi.appendChild(newContent);
+    }
+
+
+    // || Clear initials input element
+    entry.setAttribute('style', 'display: none');
+    highScoresEl.setAttribute('style', 'display: block');
+
+
+    // highScoresEl.setAttribute('style', 'display: block');
 
     // restart.addEventListener('click', function () {
     //     score = 0;
     //     placeholderIndex = 0;
     //     highScoresEl.setAttribute('style', 'display: none');
     //     quizWelcome.setAttribute('style', 'display: block');
-    //     startQuiz();
+    //     askQuestion();
     // })
 
-// }
+}
 
 // Create list items that display initials and score
 // Store these in local storage with JSON as an object

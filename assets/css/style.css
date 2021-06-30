@@ -28,6 +28,15 @@ h1 {
     color: var(--heading-color);
 }
 
+header h2 {
+    transition: .25s;
+    cursor: pointer;
+}
+
+header h2:hover {
+    color: var(--quiz-button);
+}
+
 header div {
     display: flex;
     justify-content: space-between;
@@ -115,7 +124,6 @@ button {
 
 .highscores {
     display: none;
-    flex-direction: column;
 }
 
 #leaderboard li {
