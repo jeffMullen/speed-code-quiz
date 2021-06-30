@@ -2,6 +2,7 @@
     --el-padding: 20px;
     --heading-color: #3882a0;
     --quiz-background: #f4e3b8;
+    --quiz-button: #2a9d8f;
 }
 
 
@@ -62,6 +63,22 @@ article h2, section h2 {
     padding: var(--el-padding);
     color: var(--heading-color);
     font-size: 20px;
+    font-weight: bold;
+}
+
+.quizQuest div {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+
+.quizQuest button {
+    margin: 5px 20px;
+    background: var(--quiz-button);
+    color: #fff;
+    font-size: 17px;
+    border: none;
+    border-radius: 5%;
 }
 
 
@@ -71,6 +88,7 @@ article h2, section h2 {
 
 button {
     padding: 10px;
+    
 }
 
 /* || Question styles --------- */
