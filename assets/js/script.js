@@ -87,7 +87,6 @@ function prepareAnswer() {
             if (this.getAttribute('class') === 'correct') {
                 score++;
                 p.textContent = 'Correct!';
-                console.log(judgement);
             } else {
                 secondsLeft -= 5;
                 p.textContent = 'Wrong!';
@@ -107,7 +106,6 @@ function prepareAnswer() {
 
 function nextQuestion() {
     judgement.setAttribute('style', 'display: none');
-    console.log('Hit');
 
     if (placeholderIndex === questionsArr.length) {
         return;
