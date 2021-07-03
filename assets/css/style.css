@@ -138,6 +138,14 @@ button {
     display: none;
 }
 
+#judgement {
+    display: none;
+}
+
+#judgementStyle {
+    display: none;
+}
+
 /* || Highscore display styles --------- */
 #leaderboard li {
     list-style: decimal;

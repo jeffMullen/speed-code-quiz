@@ -1,5 +1,6 @@
 var timer = document.querySelector('.timer');
 var startBtn = document.querySelector('.start-button');
+var quizQuest = document.querySelector('.quizQuest');
 
 // || Question variables
 var questOne = document.querySelector('.one');
@@ -9,7 +10,7 @@ var questFour = document.querySelector('.four');
 var questFive = document.querySelector('.five');
 var questionsArr = [questOne, questTwo, questThree, questFour, questFive];
 
-var judgement = document.querySelector('.judgement');
+var judgement = document.querySelector('#judgement');
 
 // || Score entry variables
 var displayScore = document.querySelector('#display-score');
@@ -74,29 +75,51 @@ function askQuestion() {
         questionsArr[placeholderIndex].setAttribute('style', 'display: block');
     }
 }
-
 // || Check buttons for class= "correct" to determine outcome
 function prepareAnswer() {
     var btns = document.querySelectorAll('button');
+
     for (var i = 0; i < btns.length; i++) {
+        var div = document.createElement('div');
+        var p = document.createElement('p');
         btns[i].addEventListener('click', function () {
+
             if (this.getAttribute('class') === 'correct') {
                 score++;
+                p.textContent = 'Correct!';
+                console.log(judgement);
             } else {
                 secondsLeft -= 5;
+                p.textContent = 'Wrong!';
             }
 
-            // || Clears the current question and adds one to the placeholder index
             if (placeholderIndex === questionsArr.length) {
                 return;
             } else {
-                questionsArr[placeholderIndex].setAttribute('style', 'display: none');
-                placeholderIndex++;
-                askQuestion();
+                questionsArr[placeholderIndex].appendChild(div);
+                div.appendChild(p);
             }
+            judgement.setAttribute('style', 'display: block');
+            setTimeout(nextQuestion, 1000);
         })
     }
 }
+
+function nextQuestion() {
+    judgement.setAttribute('style', 'display: none');
+    console.log('Hit');
+
+    if (placeholderIndex === questionsArr.length) {
+        return;
+    } else {
+        questionsArr[placeholderIndex].setAttribute('style', 'display: none');
+        placeholderIndex++;
+        askQuestion();
+    }
+
+}
+
+
 
 function endQuiz() {
     // || Question disappears if time runs out
@@ -152,23 +175,7 @@ function highScores() {
         newLi.appendChild(newContent);
     }
 
-
     // || Clear initials input element
     entry.setAttribute('style', 'display: none');
     highScoresEl.setAttribute('style', 'display: block');
 }
-
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-
-// WHEN I answer a question
-// THEN I am presented with another question
-
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
-// WHEN the game is over
-// THEN I can save my initials and my score
